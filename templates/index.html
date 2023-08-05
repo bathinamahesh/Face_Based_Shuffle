@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Shuffle using Face Recognition</title>
+    <!-- Bootstrap icons-->
+    
+    
+    <!-- Core theme CSS (includes Bootstrap)-->
+    
+</head>
+<body style="background-color:#333333;">
+    <style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+///// _mixins.scss
+
+@mixin display-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+///// _mixins.scss
+
+* {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+}
+
+body {
+  @include display-flex;
+
+  background-color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+.profile-cards {
+  @include display-flex;
+  flex-wrap: wrap;
+  gap: 50px;
+
+  margin-left: 20%;
+  margin-top:7%;
+
+  .card {
+
+    width: 70%;
+    height: 70vh;
+
+    position: relative;
+
+    color: #2d2d2d;
+    background-color: #b2e5e6;
+    letter-spacing: 1px;
+
+    border: 25px solid #4a4747;
+    border-radius: 25px;
+
+    overflow: hidden;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+    .card-description {
+      display: flex;
+      flex-direction: column;
+      margin-top:-9%;
+      width: auto;
+      height: 100%;
+
+      .card-description-title {
+        color: black;
+
+        font-size: 18px;
+      }
+
+      .card-description-profession {
+        display: block;
+
+        font-size: 16px;
+      }
+
+      .card-description-company {
+        display: block;
+
+        font-size: 14px;
+
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .card-description-social {
+        position: absolute;
+        bottom: 40px;
+
+        .card-description-social-follow {
+          display: block;
+
+          margin-bottom: 8px;
+
+          color: #555572;
+          font-size: 14px;
+        }
+
+        ul {
+          @include display-flex;
+          gap: 10px;
+
+          li {
+            list-style-type: none;
+
+            a {
+              @include display-flex;
+
+              width: 40px;
+              height: 40px;
+
+              color: #121212;
+
+              border-radius: 50%;
+
+              box-shadow: 6px 6px 12px #97c3c4, -6px -6px 12px #cdffff;
+
+              transition: all 0.4s;
+
+              &:hover {
+                color: white;
+
+                transform: translate(0, -7px);
+              }
+
+              svg {
+                width: calc(100% - 15px);
+                height: calc(100% - 15px);
+              }
+            }
+          }
+
+          li:nth-child(1) {
+            a {
+              &:hover {
+                background-color: #1da1f2;
+              }
+            }
+          }
+
+          li:nth-child(2) {
+            a {
+              &:hover {
+                background-color: #3f729b;
+              }
+            }
+          }
+
+          li:nth-child(3) {
+            a {
+              &:hover {
+                background-color: #00405d;
+              }
+            }
+          }
+
+          li:nth-child(4) {
+            a {
+              &:hover {
+                background-color: #0a66c2;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .card-image {
+      margin-top:-9%;
+      width: 300px;
+      height:100%;
+
+      object-fit: cover;
+    }
+  }
+}
+.videoclass{
+    padding: 0;
+    margin-left: 13%;
+    width:300px;
+    height:400px;
+    border-image-outset: 1rem;
+}
+table, th, td {
+    border: 1px solid;
+  }
+  /* CSS */
+.button-33 {
+    background-color: #c2fbd7;
+    border-radius: 100px;
+    box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+    color: green;
+    cursor: pointer;
+    display: inline-block;
+    font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border:0;
+    font-size: 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin-left:24%;
+  }
+  
+  .button-33:hover {
+    box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+    transform: scale(1.05) rotate(-1deg);
+  }
+</style>
+    <div class="profile-cards">
+        <div class="card card-1" style="overflow: scroll;">
+            <div style="background-color:light grey; text-align: center; padding: 1px;background-image:
+            linear-gradient(
+              to right, 
+              #536e5b 15%,
+              #d7f0a2 45%,
+              #aba982 65%,
+              #53755d 85%
+            );">
+                <h1 style="background-image: conic-gradient(#553c9a, #ee4b2b, #00c2cb);
+                color: transparent;
+                background-clip: text;
+                -webkit-background-clip: text;">Examination Shuffle</h1>
+            </div> 
+            <div class="card-content" style="display: flex; justify-content: space-between;">          
+                    
+                    <div class="card-image" style="flex: 1;">
+                        <video id="video" autoplay class="videoclass"></video>
+                        <button id="capture-button" class="button-33" style="width:70%;margin-top:-18%;">Capture Image</button><br><br><br>
+                        <form class="d-flex" action="/register" method="GET">
+                            <button  class="button-33" style="color:red;width:70%;">Register</button>
+                        </form>
+                    </div>
+            
+                <div class="card-description" style="margin-right:2%;flex: 1;">
+                    <br><br>
+                    <br><br>
+                    <h2 id="result">
+                    </h2>
+                    <table class="table-bordered">
+                        <tr>
+                            <th style="padding: 8px;">ID</th>
+                            <td id="id" style="padding: 8px;">-</td>
+                        </tr>
+                        <tr>
+                            <th style="padding: 8px;">Year & Sem</th>
+                            <td id="yearsem" style="padding: 8px;">-</td>
+                        </tr>
+                        <tr>
+                            <th style="padding: 8px;">Subject</th>
+                            <td id="sub" style="padding: 8px;">-</td>
+                        </tr>
+                        <tr>
+                            <th style="padding: 8px;">Block</th>
+                            <td id="block" style="padding: 8px;">-</td>
+                        </tr>
+                        <tr>
+                            <th style="padding: 8px;">Class</th>
+                            <td id="class" style="padding: 8px;">-</td>
+                        </tr>
+                        <tr>
+                            <th style="padding: 8px;">Desk Position</th>
+                            <td id="pos" style="padding: 8px;">-</td>
+                        </tr>
+
+                    
+                    </table>
+            
+                </div>
+            </div>
+      
+        </div>
+      
+        </div>
+      
+      </div>
+    
+
+
+      <script>
+        let mediaStream = null; // Variable to hold the media stream
+    
+        // Access the camera and display the video stream
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                const videoElement = document.getElementById('video');
+                videoElement.srcObject = stream;
+                mediaStream = stream; // Store the media stream
+            })
+            .catch(error => {
+                console.error('Error accessing the camera:', error);
+            });
+    
+        // Capture image when the button is clicked
+    // Capture image when the button is clicked
+    const captureButton = document.getElementById('capture-button');
+    captureButton.addEventListener('click', () => {
+    const canvas = document.createElement('canvas');
+    const videoElement = document.getElementById('video');
+    canvas.width = videoElement.videoWidth;
+    canvas.height = videoElement.videoHeight;
+    canvas.getContext('2d').drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+
+    // Convert the canvas image to a Blob file
+    canvas.toBlob(blob => {
+        const formData = new FormData();
+        formData.append('image', blob, 'singleTestImage.jpg');
+
+        // Send the image file to the server
+        fetch('/process_image', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(result => {
+            const resultElement = document.getElementById('result');
+            resultElement.textContent = result['name'];
+            const idElement = document.getElementById('id');
+            const yearsemElement = document.getElementById('yearsem');
+            const subElement = document.getElementById('sub');
+            const blockElement = document.getElementById('block');
+            const classElement = document.getElementById('class');
+            const posElement = document.getElementById('pos');
+
+            idElement.textContent = result['id'];
+            yearsemElement.textContent = result['yearsem'];
+            subElement.textContent = result['sub'];
+            blockElement.textContent = result['block'];
+            classElement.textContent = result['class'];
+            posElement.textContent = result['pos'];
+        })
+        .catch(error => {
+            console.error('Error processing the image:', error);
+        });
+    }, 'image/jpeg');
+});
+
+    
+        // Display the result returned from the server
+        const resultElement = document.getElementById('result');
+        const queryString = window.location.search;
+        if (queryString.includes('result=')) {
+            const result = decodeURIComponent(queryString.split('result=')[1]);
+            resultElement.textContent = result;
+        }
+    </script>
+</body>
+
+</html>
